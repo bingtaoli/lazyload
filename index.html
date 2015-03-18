@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+    body, div {
+    	margin: 0;
+    }
+    #loading-wrap {
+        position: absolute;
+        z-index: 999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: #252525;
+    }
+    .loading {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        margin: auto;
+        width: 119px;
+        height: 158px;
+        overflow: hidden;
+    }
+    .loading #loadingImg {
+        position: absolute;
+        width: 119px;
+        height: 158px;
+        z-index: 2;
+    }
+    /* 从这里可以看出position: absolute会按为absolute的父类进行定位 */
+    /* 原来一直以为必须releative呢 */
+    .loading #loading_pao {
+        position: absolute;
+        background: url(loading1.png) no-repeat ;
+        width: 119px;
+        height: 158px;
+        background-position: 14px 25px;
+        top: 120px;
+    }
+    img#logo {
+        position: absolute;
+        width: 130px;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: -200px;
+    }
+    </style>
+</head>
+<body>
+    <div id="loading-wrap">
+        <div class="loading">
+            <img src="loading.png"  id="loadingImg">
+            <div class="loading_pao" id="loading_pao"></div>
+        </div>
+    </div>
+	<div class="homepage">
+        <img src="logo.png" id="logo">
+    </div>
+    <script src="jquery-1.7.2.js"></script>
+    <script>
+    var loading = {
+        loading_wave: document.getElementById("loading_pao"),
+        total: 0,
+        source: ['logo.png', 'lay1_1.png', 'lay2_1.png', 'lay3_1.png', 'lay4_1.png']
+    }
+    loading.per = (1 / loading.source.length);
+
+    loading.loadingdone = function(){
+        $("#loading-wrap").fadeOut(500, function(){homepage.init();});
+    }
+    loading.loadingFn = function(){
+        var img = new Image();
+        img.onload = function(){
+            /* 每加载完一张图片，就把total加一份 */
+            loading.total += loading.per;
+            loading.loading_wave.style.top = 120*(1-loading.total) + 'px';
+            loading.source.pop();
+            setTimeout(function(){
+                if(loading.source.length == 0)
+                    loading.loadingdone();
+                else 
+                    loading.loadingFn();
+            }, 1000/3)
+        }
+        /* 每次调用一次函数，就会把图片src更改 */
+        img.src = loading.source[loading.source.length - 1];
+    }
+
+    loading.loadingFn();
+
+    var logo = {
+        ele: document.getElementById("logo"),
+        y: 0,
+        speed: 0,
+        g: 3,
+        fall: function(h, obj){
+            logo.speed += logo.g;
+            logo.y += logo.speed;
+            if(logo.y > h){
+                logo.y = h;
+                logo.speed *= -1;
+            }
+            logo.speed *= 0.95;
+            obj.style.top = logo.y - 320 + 'px';
+        },
+    }
+    var homepage = {
+        logoIn: function(){
+            setInterval(function(){logo.fall(400, logo.ele)}, 15);
+        },
+        init: function(){
+            setTimeout(function(){homepage.logoIn()}, 500);
+        }
+    }
+    </script>
+</body>
