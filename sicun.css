@@ -1,88 +1,94 @@
 body, div {
     	margin: 0;
     }
-    #loading-wrap {
-        position: absolute;
-        z-index: 999;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: #252525;
-    }
-    .loading {
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        margin: auto;
-        width: 119px;
-        height: 158px;
-        overflow: hidden;
-    }
-    .loading #loadingImg {
-        position: absolute;
-        width: 119px;
-        height: 158px;
-        z-index: 2;
-    }
-    /* 从这里可以看出position: absolute会按为absolute的父类进行定位 */
-    /* 原来一直以为必须releative呢 */
-    .loading #loading_pao {
-        position: absolute;
-        background: url(loading1.png) no-repeat ;
-        width: 119px;
-        height: 158px;
-        background-position: 14px 25px;
-        top: 120px;
-    }
-    .main {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        right: 0;
-    }
-    img#logo {
-        position: absolute;
-        width: 130px;
-        margin: auto;
-        left: 0;
-        right: 0;
-        top: -200px;
-    }
-    .boxview {
-        position: absolute;
-        width: 100%;
-        left: 0;
-        right: 0;
-        overflow: hidden;
-    }
-    .lay {
-        position: absolute;
-    }
-    .lay1_1 {
-        background: url(lay1_1.png) no-repeat;
-        width: 3400px;
-        height: 100%;
-        left: 1536px;
-        background-position: 0 50%;
-        z-index: 30;
-    }
-    .lay1_1 {
-        background: url(lay1_1.png) no-repeat;
-        width: 3400px;
-        height: 100%;
-        left: 1536px;
-        background-position: 0 50%;
-        z-index: 30;
-    }
-    .lay2_1 {
-        background: url(lay2_1.png) no-repeat;
-        width: 3400px;
-        height: 100%;
-        left: 4200px;
-        background-position: 0 50%;
-        z-index: 30;
-    }
+#loading-wrap {
+    position: absolute;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #252525;
+}
+.loading {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    width: 119px;
+    height: 158px;
+    overflow: hidden;
+}
+.loading #loadingImg {
+    position: absolute;
+    width: 119px;
+    height: 158px;
+    z-index: 2;
+}
+.loading #loading_pao {
+    position: absolute;
+    background: url(loading1.png) no-repeat ;
+    width: 119px;
+    height: 158px;
+    background-position: 14px 25px;
+    top: 120px;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+img#logo {
+    position: absolute;
+    width: 130px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: -200px;
+}
+.boxview {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+}
+.lay {
+    position: absolute;
+    display: block;
+    -webkit-transition: all ease-out 1s;
+    -ms-transition: all ease-out 1s;
+    -moz-transition: all ease-out 1s;
+    transition: all ease-out 1s;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+.lay1_1 {
+    background: url(lay1_1.png) no-repeat;
+    width: 3400px;
+    height: 100%;
+    left: 1536px;
+    background-position: 0 50%;
+    z-index: 30;
+}
+.lay1_2 {
+    position: absolute;
+    width: 488px;
+    height: 308px;
+    top: 50%;
+    margin-top: -130px;
+    z-index: 31;
+    background: url(lay1_2.png) no-repeat ;
+}
+.lay2_1 {
+    background: url(lay2_1.png) no-repeat;
+    width: 3400px;
+    height: 100%;
+    left: 4200px;
+    background-position: 0 50%;
+    z-index: 30;
+}
